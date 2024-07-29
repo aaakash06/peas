@@ -1,14 +1,22 @@
 export class Teacher {
-  constructor(name: string, subject: string, topic: string, HPC: number) {
+  constructor(
+    name: string,
+    subject: string,
+    topic: string,
+    initials: string,
+    HPC: number
+  ) {
     this.name = name;
     this.subject = subject;
     this.topic = topic;
     this.HPC = HPC;
+    this.initials = initials;
   }
 
   name: string;
   subject: string;
   topic: string;
+  initials: string;
   HPC: number;
 }
 

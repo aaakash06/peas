@@ -1,9 +1,21 @@
+import { DialogBox } from "@/components/common/DialogBox";
+import MainTable from "@/components/main/MainTable";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
-import Selection from "@/components/common/select";
-import TableComp from "@/components/common/table";
+import { PrismaClient } from "@prisma/client";
+import Link from "next/link";
 
-export default function Home() {
+export default async function Home() {
+  const client = new PrismaClient();
+  // await client.teacher.create({
+  //   data: {
+  //     name: "Aakash Bagale",
+  //     initials: "AT",
+  //     HPC: 4,
+  //     subject: "Physics",
+  //     topic: "wave",
+  //   },
+  // });
+
   return (
     <>
       <div className="">
@@ -13,7 +25,11 @@ export default function Home() {
       </div>
 
       <div>
-        <TableComp rows={["BS101", "BS102", "BS103", "BS104"]}></TableComp>
+        <MainTable></MainTable>
+      </div>
+      <Button>Add</Button>
+      <div className="mt-20">
+        <Link href={"/teachers"}>Teachers</Link>
       </div>
     </>
   );
