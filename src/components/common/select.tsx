@@ -1,14 +1,3 @@
-// import {
-//   chemistryTeachers,
-//   mathTeachers,
-//   physicsTeachers,
-// } from "@/backend/data/data";
-// "use server";
-import {
-  physicsTeachers,
-  mathTeachers,
-  chemistryTeachers,
-} from "@/backend/data/data";
 import {
   Select,
   SelectContent,
@@ -18,27 +7,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { PrismaClient } from "@prisma/client";
+import { TeacherType } from "@/context/ListProvider";
 
-const client = new PrismaClient();
-
-export default function Selection({ options }: { options?: string[] }) {
-  // const physicsTeachers = await client.teacher.findMany({
-  //   where: {
-  //     subject: "Physics",
-  //   },
-  // });
-  // const chemistryTeachers = await client.teacher.findMany({
-  //   where: {
-  //     subject: "Chemistry",
-  //   },
-  // });
-  // const mathTeachers = await client.teacher.findMany({
-  //   where: {
-  //     subject: "Math",
-  //   },
-  // });
-
+export default async function Selection({
+  options,
+}: {
+  options: TeacherType[][];
+}) {
   return (
     <Select>
       <SelectTrigger className="w-[180px]">
@@ -47,7 +22,7 @@ export default function Selection({ options }: { options?: string[] }) {
       <SelectContent>
         <SelectGroup>
           <SelectLabel>Physics</SelectLabel>
-          {physicsTeachers?.map((pt) => (
+          {options[0]?.map((pt) => (
             <SelectItem key={pt.name} value={pt.name}>
               {pt.name}
             </SelectItem>
@@ -55,7 +30,7 @@ export default function Selection({ options }: { options?: string[] }) {
         </SelectGroup>
         <SelectGroup>
           <SelectLabel>Math</SelectLabel>
-          {mathTeachers?.map((pt) => (
+          {options[2]?.map((pt) => (
             <SelectItem key={pt.name} value={pt.name}>
               {pt.name}
             </SelectItem>
@@ -63,7 +38,7 @@ export default function Selection({ options }: { options?: string[] }) {
         </SelectGroup>
         <SelectGroup>
           <SelectLabel>Chemistry</SelectLabel>
-          {chemistryTeachers?.map((pt) => (
+          {options[1]?.map((pt) => (
             <SelectItem key={pt.name} value={pt.name}>
               {pt.name}
             </SelectItem>

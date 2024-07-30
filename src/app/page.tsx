@@ -5,17 +5,6 @@ import { PrismaClient } from "@prisma/client";
 import Link from "next/link";
 
 export default async function Home() {
-  const client = new PrismaClient();
-  // await client.teacher.create({
-  //   data: {
-  //     name: "Aakash Bagale",
-  //     initials: "AT",
-  //     HPC: 4,
-  //     subject: "Physics",
-  //     topic: "wave",
-  //   },
-  // });
-
   return (
     <>
       <div className="">

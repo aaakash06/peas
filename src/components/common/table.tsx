@@ -9,10 +9,13 @@ import {
 } from "@/components/ui/table";
 import Selection from "./select";
 import { Fragment } from "react";
+import { getAllTeachers, getTeachers } from "@/actions/actions";
 
-const teachers = ["T1", "T2", "T3", "T4", "T5", "T6", "T7"];
-
-export default function TableComp({ rows }: { rows: string[] }) {
+export default async function TableComp({ rows }: { rows: string[] }) {
+  const physicsTeachers = await getTeachers("Physics");
+  const chemsitryTeachers = await getTeachers("Chemistry");
+  const mathTeachers = await getTeachers("Math");
+  const teachers = [physicsTeachers, chemsitryTeachers, mathTeachers];
   return (
     <div className="px-20 my-20">
       <Table>

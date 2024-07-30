@@ -25,7 +25,7 @@ export default function TeachersPage() {
   // const [ce, setCe] = useState(false);
   // const { teachers, setTeachers } = useTeacher();
 
-  const subjects = ["Physics", "Math", "Chemsitry"];
+  const subjects = ["Physics", "Math", "Chemistry"];
 
   return (
     <>
