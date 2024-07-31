@@ -8,7 +8,6 @@ const MainTable = async () => {
   const chemsitryTeachers = await getTeachers("Chemistry");
   const mathTeachers = await getTeachers("Math");
   const teachers = [physicsTeachers, chemsitryTeachers, mathTeachers];
-  // const [classes, setClasses] = useState(["BS101", "BS102", "BS103", "BS104"]);
   return (
     <TableComp
       teachers={teachers}

@@ -1,6 +1,7 @@
 // "use server";
 import { getTeachers } from "@/actions/actions";
-import { TeacherType } from "@/context/ListProvider";
+import { TeacherType } from "@/types";
+
 import React from "react";
 
 const TeachersList = async ({ subject }: { subject: string }) => {

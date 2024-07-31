@@ -1,6 +1,6 @@
 "use server";
 
-import { TeacherType } from "@/context/ListProvider";
+import { TeacherType } from "@/types";
 import { PrismaClient } from "@prisma/client";
 const client = new PrismaClient();
 

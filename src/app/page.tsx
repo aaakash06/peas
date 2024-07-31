@@ -1,7 +1,6 @@
-import { DialogBox } from "@/components/common/DialogBox";
 import MainTable from "@/components/main/MainTable";
 import { Button } from "@/components/ui/button";
-import { PrismaClient } from "@prisma/client";
+
 import Link from "next/link";
 
 export default async function Home() {

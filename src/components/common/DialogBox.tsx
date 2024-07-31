@@ -12,11 +12,10 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Teacher } from "@/backend/classes/classes";
 
 import { useRouter } from "next/navigation";
 import { LegacyRef, useRef } from "react";
-import { TeacherType, useTeacher } from "@/context/ListProvider";
+
 import { addTeacher } from "@/actions/actions";
 
 export function DialogBox({ subject }: { subject: string }) {
@@ -25,9 +24,6 @@ export function DialogBox({ subject }: { subject: string }) {
   const topicRef = useRef<HTMLInputElement>(null);
   const initialsRef = useRef<HTMLInputElement>(null);
   const hpcRef = useRef<HTMLInputElement>(null);
-  // const picRef = useRef<HTMLInputElement>(null);
-
-  const { setTeachers } = useTeacher();
 
   return (
     <Dialog>
