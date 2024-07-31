@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "prisma": {
-    "schema": ".src/db/prisma/schema.prisma"
+    "schema": "./src/db/prisma/schema.prisma"
   },
   "scripts": {
     "dev": "next dev",
