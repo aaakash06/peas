@@ -1,14 +1,7 @@
 "use client";
 
+import { TeacherType } from "@/types";
 import { createContext, useContext, useEffect, useState } from "react";
-
-export interface TeacherType {
-  name: string;
-  subject: string;
-  topic: string;
-  initials: string;
-  HPC: number;
-}
 
 const Context = createContext<any | undefined>(undefined);
 

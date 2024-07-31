@@ -1,3 +1,4 @@
+"use client";
 import {
   Table,
   TableBody,
@@ -8,14 +9,30 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import Selection from "./select";
-import { Fragment } from "react";
-import { getAllTeachers, getTeachers } from "@/actions/actions";
+import { Fragment, useCallback, useEffect, useRef, useState } from "react";
+import { TeacherDBType } from "@/types";
 
-export default async function TableComp({ rows }: { rows: string[] }) {
-  const physicsTeachers = await getTeachers("Physics");
-  const chemsitryTeachers = await getTeachers("Chemistry");
-  const mathTeachers = await getTeachers("Math");
-  const teachers = [physicsTeachers, chemsitryTeachers, mathTeachers];
+export default function TableComp({
+  rows,
+  teachers,
+}: {
+  rows: string[];
+  teachers: TeacherDBType[][];
+}) {
+  const refreash = useCallback(() => {
+    setRefresh((r) => !r);
+  }, []);
+  const fillArray = useCallback(() => {
+    let array = [];
+    for (let row = 0; row < rows.length; row++) {
+      array.push(["TEACHER", "TEACHER", "TEACHER", "TEACHER"]);
+    }
+    return array;
+  }, []);
+
+  const valuesArray = useRef<string[][]>(fillArray());
+
+  const [refresh, setRefresh] = useState(false);
   return (
     <div className="px-20 my-20">
       <Table>
@@ -32,22 +49,46 @@ export default async function TableComp({ rows }: { rows: string[] }) {
           </TableRow>
         </TableHeader>
         <TableBody className="">
-          {rows?.map((row) => {
+          {rows?.map((row, idx) => {
             return (
               <Fragment key={row}>
                 <TableRow>
                   <TableCell className="font-medium">{row}</TableCell>
                   <TableCell className="">
-                    <Selection options={teachers}></Selection>
+                    <Selection
+                      row={idx}
+                      col={0}
+                      teachers={teachers}
+                      valuesArray={valuesArray.current}
+                      refreash={refreash}
+                    ></Selection>
                   </TableCell>
                   <TableCell>
-                    <Selection options={teachers}></Selection>
+                    <Selection
+                      row={idx}
+                      col={1}
+                      teachers={teachers}
+                      valuesArray={valuesArray.current}
+                      refreash={refreash}
+                    ></Selection>
                   </TableCell>
                   <TableCell>
-                    <Selection options={teachers}></Selection>
+                    <Selection
+                      row={idx}
+                      col={2}
+                      teachers={teachers}
+                      valuesArray={valuesArray.current}
+                      refreash={refreash}
+                    ></Selection>
                   </TableCell>
                   <TableCell>
-                    <Selection options={teachers}></Selection>
+                    <Selection
+                      row={idx}
+                      col={3}
+                      teachers={teachers}
+                      valuesArray={valuesArray.current}
+                      refreash={refreash}
+                    ></Selection>
                   </TableCell>
                 </TableRow>
               </Fragment>
