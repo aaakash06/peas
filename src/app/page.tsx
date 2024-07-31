@@ -16,9 +16,12 @@ export default async function Home() {
       <div>
         <MainTable></MainTable>
       </div>
-      <Button>Add</Button>
-      <div className="mt-20">
-        <Link href={"/teachers"}>Teachers</Link>
+
+      <div className="mt-20 text-center">
+        <Link href={"/teachers"}>
+          {" "}
+          <Button>Teachers</Button>
+        </Link>
       </div>
     </>
   );

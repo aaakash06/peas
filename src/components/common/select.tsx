@@ -23,9 +23,6 @@ export default function Selection({
   refreash: () => void;
   valuesArray: string[][];
 }) {
-  if (col == 0 && row == 0) {
-    console.log(valuesArray);
-  }
   // console.log(valuesArray.length);
   // if (valuesArray.length > 0 && col == 0) {
   //   console.log(valuesArray[0].includes("Aakash Bagale Thapa"));

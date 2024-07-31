@@ -36,9 +36,9 @@ export default function TableComp({
   return (
     <div className="px-20 my-20">
       <Table>
-        <TableCaption className="mt-20">
+        {/* <TableCaption className="mt-20">
           A list of your recent invoices.
-        </TableCaption>
+        </TableCaption> */}
         <TableHeader>
           <TableRow>
             <TableHead className="w-[100px]">Class</TableHead>
