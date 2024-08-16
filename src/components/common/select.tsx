@@ -83,11 +83,10 @@ export default function Selection({
           <SelectLabel>Math</SelectLabel>
           {teachers[2]?.map((pt) => {
             if (
-              valuesArray[col].includes(pt.name) &&
-              valuesArray[col][row] != pt.name
-            ) {
+              valuesArray[col][row] != pt.name &&
+              valuesArray[col].includes(pt.name)
+            )
               return;
-            }
             return (
               <SelectItem key={pt.name} value={pt.name}>
                 {pt.name}

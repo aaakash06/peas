@@ -11,7 +11,7 @@ const MainTable = async () => {
   return (
     <TableComp
       teachers={teachers}
-      rows={["BS101", "BS102", "BS103", "BS104"]}
+      rows={["BS101", "BS102", "BS103", "BS104", "BS105"]}
     ></TableComp>
   );
 };

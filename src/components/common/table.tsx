@@ -23,9 +23,14 @@ export default function TableComp({
     setRefresh((r) => !r);
   }, []);
   const fillArray = useCallback(() => {
-    let array = [];
+    // array = [ col1, col2, col3, col4]
+    const colArray = [];
     for (let row = 0; row < rows.length; row++) {
-      array.push(["TEACHER", "TEACHER", "TEACHER", "TEACHER"]);
+      colArray.push(".");
+    }
+    let array = [];
+    for (let col = 0; col < 4; col++) {
+      array.push(colArray);
     }
     return array;
   }, []);
