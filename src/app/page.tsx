@@ -7,16 +7,16 @@ export default async function Home() {
   return (
     <>
       <div className="">
-        <h1 className="text-center text-3xl font-bold my-10">
-          Date: something
+        <h1 className="text-center font-spaceGrotesk text-3xl font-bold my-10">
+          Date: {new Date().toISOString().slice(0, 10)}
         </h1>
       </div>
 
-      <div>
+      <div className="font-poppins">
         <MainTable></MainTable>
       </div>
 
-      <div className="mt-20 text-center">
+      <div className="mt-20 flex gap-20 justify-center">
         <Link href={"/teachers"}>
           {" "}
           <Button>Teachers</Button>
