@@ -58,11 +58,11 @@ export function ContextProvider({ children }: { children: React.ReactNode }) {
   );
 
   const transposeArray = useCallback(() => {
-    const transpose = valuesArray.map((_, colIndex) =>
+    const transpose = valuesArray[0].map((_, colIndex) =>
       valuesArray.map((row) => row[colIndex])
     );
     return transpose;
-  }, [valuesArray]);
+  }, []);
 
   return (
     <Context.Provider
@@ -89,6 +89,5 @@ export function useValuesArray() {
 }
 export function useTeachersArray() {
   const { transposeArray } = useContext(Context);
-  const teachersArray = transposeArray();
-  return { teachersArray };
+  return { transposeArray };
 }

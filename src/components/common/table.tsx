@@ -24,9 +24,10 @@ export default function TableComp({
   teachers: TeacherDBType[][];
 }) {
   const { classes: rows }: { classes: string[] } = useClasses();
-  const teachersArray = useTeachersArray();
+  const { transposeArray } = useTeachersArray();
   const handleCSV = useCallback(() => {
-    console.log(teachersArray);
+    // console.log(transposeArray());
+    const teachersArray = transposeArray();
   }, []);
 
   return (

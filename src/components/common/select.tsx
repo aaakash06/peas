@@ -29,7 +29,7 @@ export default function Selection({
         const newValuesArray = [...valuesArray];
         newValuesArray[col][row] = value;
         setValuesArray(newValuesArray);
-        console.log(valuesArray);
+        // console.log(valuesArray);
       }}
     >
       <SelectTrigger className="w-[180px]">
