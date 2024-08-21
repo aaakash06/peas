@@ -62,7 +62,7 @@ export function ContextProvider({ children }: { children: React.ReactNode }) {
       valuesArray.map((row) => row[colIndex])
     );
     return transpose;
-  }, []);
+  }, [valuesArray]);
 
   return (
     <Context.Provider

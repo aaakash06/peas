@@ -25,9 +25,12 @@ function arrayToCSV(twoDiArray: string[][]) {
       twoDiArray[i][j] = '"' + twoDiArray[i][j] + '"'; // Handle elements that contain commas
     }
     csvRows.push(twoDiArray[i].join(","));
+    csvRows[i] = `"BS10${i + 1}"` + "," + csvRows[i];
   }
-
+  csvRows.unshift(`" ", "Period 1", "Period 2", "Period 3", "Period 4"`);
   let csvString = csvRows.join("\r\n");
+
+  console.log(csvString);
   let a = document.createElement("a");
   a.href = "data:attachment/csv," + csvString;
   a.target = "_blank";
