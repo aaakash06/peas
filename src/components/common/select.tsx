@@ -8,7 +8,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useValuesArray, useRefreash } from "@/context/ListProvider";
+import { useValuesArray } from "@/context/ListProvider";
 import { TeacherDBType } from "@/types";
 
 export default function Selection({
@@ -21,16 +21,15 @@ export default function Selection({
   teachers: TeacherDBType[][];
 }) {
   const { valuesArray, setValuesArray } = useValuesArray();
-  const { refreash } = useRefreash();
 
   return (
     <Select
+      // value={valuesArray[col][row] }
       onValueChange={(value: string) => {
-        // setValuesArray(col, row, value);
-        valuesArray[col][row] = value;
-
+        const newValuesArray = [...valuesArray];
+        newValuesArray[col][row] = value;
+        setValuesArray(newValuesArray);
         console.log(valuesArray);
-        refreash();
       }}
     >
       <SelectTrigger className="w-[180px]">

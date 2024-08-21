@@ -38,9 +38,6 @@ export function ContextProvider({ children }: { children: React.ReactNode }) {
   //   ]);
   // }, []);
 
-  const refreash = useCallback(() => {
-    setRefresh((r) => !r);
-  }, []);
   const fillArray = useCallback(() => {
     const colArray = [];
     for (let row = 0; row < classes.length; row++) {
@@ -53,32 +50,23 @@ export function ContextProvider({ children }: { children: React.ReactNode }) {
     return array;
   }, [classes]);
 
-  const valuesArray = useRef<string[][]>(fillArray());
-
-  const transposeArray = useCallback(() => {
-    const transpose = valuesArray.current[0].map((_, colIndex) =>
-      valuesArray.current.map((row) => row[colIndex])
-    );
-    return transpose;
-  }, [valuesArray.current]);
-
-  const [refresh, setRefresh] = useState(false);
-
-  const setValuesArray = useCallback(
-    (col: number, row: number, value: string) => {
-      valuesArray.current[col][row] = value;
-    },
-    []
+  const [valuesArray, setValuesArray] = useState(
+    Array(4).fill(Array(classes.length).fill(null))
   );
+
+  // const transposeArray = useCallback(() => {
+  //   const transpose = valuesArray.current[0].map((_, colIndex) =>
+  //     valuesArray.current.map((row) => row[colIndex])
+  //   );
+  //   return transpose;
+  // }, [valuesArray.current]);
 
   return (
     <Context.Provider
       value={{
         classes,
         setClasses,
-        refreash,
         valuesArray,
-        transposeArray,
         setValuesArray,
       }}
     >
@@ -91,16 +79,12 @@ export function useClasses() {
   const { classes, setClasses } = useContext(Context);
   return { classes, setClasses };
 }
-export function useRefreash() {
-  const { refreash } = useContext(Context);
-  return { refreash };
-}
 export function useValuesArray() {
   const { valuesArray, setValuesArray } = useContext(Context);
-  return { valuesArray: valuesArray.current, setValuesArray };
+  return { valuesArray, setValuesArray };
 }
-export function useTeachersArray() {
-  const { transposeArray } = useContext(Context);
-  const teachersArray = transposeArray();
-  return { teachersArray };
-}
+// export function useTeachersArray() {
+//   const { transposeArray } = useContext(Context);
+//   const teachersArray = transposeArray();
+//   return { teachersArray };
+// }
