@@ -13,8 +13,7 @@ import { Fragment, useCallback, useEffect, useRef, useState } from "react";
 import { TeacherDBType } from "@/types";
 import {
   useClasses,
-
-  // useTeachersArray,
+  useTeachersArray,
   useValuesArray,
 } from "@/context/ListProvider";
 import { Button } from "../ui/button";
@@ -25,10 +24,10 @@ export default function TableComp({
   teachers: TeacherDBType[][];
 }) {
   const { classes: rows }: { classes: string[] } = useClasses();
-  // const teachersArray = useTeachersArray();
-  // const handleCSV = useCallback(() => {
-  //   console.log(teachersArray);
-  // }, []);
+  const teachersArray = useTeachersArray();
+  const handleCSV = useCallback(() => {
+    console.log(teachersArray);
+  }, []);
 
   return (
     <>
@@ -89,7 +88,7 @@ export default function TableComp({
       </div>
 
       <div className="flex justify-center">
-        {/* <Button onClick={handleCSV}>Download CSV</Button> */}
+        <Button onClick={handleCSV}>Download CSV</Button>
       </div>
     </>
   );

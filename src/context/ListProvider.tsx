@@ -51,15 +51,18 @@ export function ContextProvider({ children }: { children: React.ReactNode }) {
   }, [classes]);
 
   const [valuesArray, setValuesArray] = useState(
-    Array(4).fill(Array(classes.length).fill(null))
+    // removes the reference issue
+    Array.from({ length: 4 }, () =>
+      Array.from({ length: classes.length }, () => null)
+    )
   );
 
-  // const transposeArray = useCallback(() => {
-  //   const transpose = valuesArray.current[0].map((_, colIndex) =>
-  //     valuesArray.current.map((row) => row[colIndex])
-  //   );
-  //   return transpose;
-  // }, [valuesArray.current]);
+  const transposeArray = useCallback(() => {
+    const transpose = valuesArray.map((_, colIndex) =>
+      valuesArray.map((row) => row[colIndex])
+    );
+    return transpose;
+  }, [valuesArray]);
 
   return (
     <Context.Provider
@@ -68,6 +71,7 @@ export function ContextProvider({ children }: { children: React.ReactNode }) {
         setClasses,
         valuesArray,
         setValuesArray,
+        transposeArray,
       }}
     >
       {children}
@@ -83,8 +87,8 @@ export function useValuesArray() {
   const { valuesArray, setValuesArray } = useContext(Context);
   return { valuesArray, setValuesArray };
 }
-// export function useTeachersArray() {
-//   const { transposeArray } = useContext(Context);
-//   const teachersArray = transposeArray();
-//   return { teachersArray };
-// }
+export function useTeachersArray() {
+  const { transposeArray } = useContext(Context);
+  const teachersArray = transposeArray();
+  return { teachersArray };
+}
