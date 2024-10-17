@@ -33,7 +33,7 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${spaceGrotesk.variable}  ${poppins.variable}`}
     >
-      <body className={inter.className}>
+      <body className={`relative`}>
         <ContextProvider>{children}</ContextProvider>
       </body>
     </html>

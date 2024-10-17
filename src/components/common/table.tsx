@@ -56,7 +56,10 @@ export default function TableComp({
 
   return (
     <>
-      <div className="px-20 my-20">
+      <div className="flex justify-end mr-20 mb-1 ">
+        <Button onClick={handleCSV}>Download CSV</Button>
+      </div>
+      <div className="px-20 ">
         <Table>
           {/* <TableCaption className="mt-20">
           A list of your recent invoices.
@@ -110,10 +113,6 @@ export default function TableComp({
             })}
           </TableBody>
         </Table>
-      </div>
-
-      <div className="flex justify-center">
-        <Button onClick={handleCSV}>Download CSV</Button>
       </div>
     </>
   );

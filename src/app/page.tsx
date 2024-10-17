@@ -1,3 +1,4 @@
+import sendMessage from "@/actions/whatsapp";
 import MainTable from "@/components/main/MainTable";
 import { Button } from "@/components/ui/button";
 
@@ -21,6 +22,7 @@ export default async function Home() {
           {" "}
           <Button>Teachers</Button>
         </Link>
+        <Button>Send Message</Button>
       </div>
     </>
   );
